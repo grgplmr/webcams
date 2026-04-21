@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AéroCams France — Webcams et METAR des aéroports et aérodromes VFR français. Données météo en temps réel pour pilotes.">
+  <title>AéroCams France | Webcams des terrains d'aviation</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── En-tête avec filtres ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-brand">
+      <span class="header-logo" aria-hidden="true">✈</span>
+      <h1>AéroCams France</h1>
+      <span class="header-sub">Webcams &amp; METAR des terrains d'aviation</span>
+    </div>
+
+    <div class="header-filters" role="search" aria-label="Filtres terrains">
+      <label for="filter-region" class="sr-only">Région</label>
+      <select id="filter-region" title="Filtrer par région">
+        <option value="">Toutes les régions</option>
+      </select>
+
+      <label for="filter-type" class="sr-only">Type de terrain</label>
+      <select id="filter-type" title="Filtrer par type de terrain">
+        <option value="">Tous les terrains</option>
+        <option value="aéroport">Aéroports</option>
+        <option value="aérodrome">Aérodromes</option>
+      </select>
+
+      <label class="filter-checkbox" title="Afficher uniquement les terrains avec webcam configurée">
+        <input type="checkbox" id="filter-webcam">
+        Webcam uniquement
+      </label>
+    </div>
+  </header>
+
+  <!-- ── Zone principale : carte + sidebar ────────────────────────────── -->
+  <main class="main-layout">
+
+    <div id="map" role="application" aria-label="Carte des terrains d'aviation français"></div>
+
+    <aside id="sidebar" class="sidebar sidebar-hidden" aria-label="Détail du terrain">
+      <button class="sidebar-close" id="sidebar-close" aria-label="Fermer le panneau">×</button>
+      <div id="sidebar-content">
+        <div class="placeholder-message">
+          <p>Cliquez sur un marqueur pour afficher la webcam et le METAR du terrain.</p>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ── Liste des terrains ────────────────────────────────────────────── -->
+  <section class="terrain-list-section" aria-label="Liste des terrains">
+    <h2>Terrains disponibles</h2>
+    <div id="terrain-list" class="terrain-list" role="list" aria-live="polite"></div>
+  </section>
+
+  <!-- ── Scripts ──────────────────────────────────────────────────────── -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN2GqnY=" crossorigin=""></script>
+  <script src="metar.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
