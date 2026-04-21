@@ -1,14 +1,26 @@
 {
   "_meta": {
-    "version": "1.0",
-    "description": "Base de données des webcams aéronautiques françaises. Champ url_webcam : mettre l'URL Windy embed (windy.com/webcams → clic sur une cam près du terrain → copier l'ID numérique de l'URL). Format embed : https://webcams.windy.com/webcams/public/embed/player/{ID}/player",
-    "sources_verifiees": {
-      "metar": "aviationweather.gov/api/data/metar (CORS ouvert, sans clé)",
-      "webcam_windy": "iframe embed sans clé, ID à trouver sur windy.com/webcams",
-      "webcam_mjpeg": "flux MJPEG direct, vérifier CORS avant intégration"
-    }
+    "version": "1.1",
+    "description": "Webcams aéronautiques françaises. Pour ajouter une webcam : 1) aller sur windy.com/webcams, 2) cliquer sur une cam près du terrain, 3) copier l'ID numérique de l'URL, 4) coller dans windy_webcam_id + construire url_webcam. Le champ actif:false déclenche la recherche automatique via l'API Windy au clic.",
+    "embed_url_format": "https://webcams.windy.com/webcams/public/embed/player/{WINDY_ID}/day"
   },
   "cameras": [
+    {
+      "id": "LFDC",
+      "nom": "Montendre-Marcillac",
+      "oaci": "LFDC",
+      "lat": 45.2744,
+      "lng": -0.4522,
+      "type": "aérodrome",
+      "region": "Nouvelle-Aquitaine",
+      "source": "windy_dynamic",
+      "windy_webcam_id": null,
+      "url_webcam": null,
+      "url_direct": "https://www.windy.com/webcams/map/France?45.274,-0.452,12",
+      "embed_type": "iframe",
+      "actif": false,
+      "notes": "Terrain home base. Pas de webcam Windy indexée à moins de 30 km. L'API Windy cherchera automatiquement."
+    },
     {
       "id": "LFPG",
       "nom": "Paris Charles de Gaulle",
@@ -17,12 +29,13 @@
       "lng": 2.5479,
       "type": "aéroport",
       "region": "Île-de-France",
-      "source": "windy",
+      "source": "windy_dynamic",
+      "windy_webcam_id": null,
       "url_webcam": null,
-      "url_direct": "https://www.windy.com/webcams/map/France?49.009,2.548,11",
+      "url_direct": "https://www.windy.com/webcams/map/France?49.009,2.548,12",
       "embed_type": "iframe",
       "actif": false,
-      "notes": "Chercher ID Windy : windy.com/webcams/map/France?49.009,2.548,11"
+      "notes": "Pas de webcam Windy labellisée CDG trouvée. Recherche dynamique au rayon 30 km."
     },
     {
       "id": "LFPO",
@@ -32,12 +45,13 @@
       "lng": 2.3794,
       "type": "aéroport",
       "region": "Île-de-France",
-      "source": "windy",
+      "source": "windy_dynamic",
+      "windy_webcam_id": null,
       "url_webcam": null,
-      "url_direct": "https://www.windy.com/webcams/map/France?48.723,2.379,11",
+      "url_direct": "https://www.windy.com/webcams/map/France?48.723,2.379,12",
       "embed_type": "iframe",
       "actif": false,
-      "notes": "Chercher ID Windy : windy.com/webcams/map/France?48.723,2.379,11"
+      "notes": "Recherche dynamique au rayon 25 km."
     },
     {
       "id": "LFBO",
@@ -48,11 +62,12 @@
       "type": "aéroport",
       "region": "Occitanie",
       "source": "windy",
-      "url_webcam": null,
-      "url_direct": "https://www.windy.com/webcams/map/France?43.629,1.364,11",
+      "windy_webcam_id": "1351997418",
+      "url_webcam": "https://webcams.windy.com/webcams/public/embed/player/1351997418/day",
+      "url_direct": "https://www.windy.com/webcams/1351997418",
       "embed_type": "iframe",
-      "actif": false,
-      "notes": "Chercher ID Windy : windy.com/webcams/map/France?43.629,1.364,11"
+      "actif": true,
+      "notes": "Toulouse panoramique HD — vue dégagée sur le ciel de la région"
     },
     {
       "id": "LFMN",
@@ -63,11 +78,12 @@
       "type": "aéroport",
       "region": "Provence-Alpes-Côte d'Azur",
       "source": "windy",
-      "url_webcam": null,
-      "url_direct": "https://www.windy.com/webcams/map/France?43.658,7.216,11",
+      "windy_webcam_id": "1334227625",
+      "url_webcam": "https://webcams.windy.com/webcams/public/embed/player/1334227625/day",
+      "url_direct": "https://www.windy.com/webcams/1334227625",
       "embed_type": "iframe",
-      "actif": false,
-      "notes": "Nice : haute densité de webcams Windy sur la Côte d'Azur, bonne chance de trouver une cam face mer"
+      "actif": true,
+      "notes": "Webcam Windy labellisée 'Nice : Aéroport' — vue directe sur le trafic"
     },
     {
       "id": "LFBD",
@@ -78,11 +94,12 @@
       "type": "aéroport",
       "region": "Nouvelle-Aquitaine",
       "source": "windy",
-      "url_webcam": null,
-      "url_direct": "https://www.windy.com/webcams/map/France?44.828,-0.716,11",
+      "windy_webcam_id": "1377398835",
+      "url_webcam": "https://webcams.windy.com/webcams/public/embed/player/1377398835/day",
+      "url_direct": "https://www.windy.com/webcams/1377398835",
       "embed_type": "iframe",
-      "actif": false,
-      "notes": "Chercher ID Windy : windy.com/webcams/map/France?44.828,-0.716,11"
+      "actif": true,
+      "notes": "Bordeaux panoramique HD — centre-ville, 9 km du terrain. Vue sur le ciel girondins."
     },
     {
       "id": "LFLL",
@@ -93,11 +110,12 @@
       "type": "aéroport",
       "region": "Auvergne-Rhône-Alpes",
       "source": "windy",
-      "url_webcam": null,
-      "url_direct": "https://www.windy.com/webcams/map/France?45.726,5.081,11",
+      "windy_webcam_id": "1350074411",
+      "url_webcam": "https://webcams.windy.com/webcams/public/embed/player/1350074411/day",
+      "url_direct": "https://www.windy.com/webcams/1350074411",
       "embed_type": "iframe",
-      "actif": false,
-      "notes": "Chercher ID Windy : windy.com/webcams/map/France?45.726,5.081,11"
+      "actif": true,
+      "notes": "Lyon : Périphérique Nord — 12 km ouest du terrain, direction approche est-ouest"
     },
     {
       "id": "LFML",
@@ -108,11 +126,12 @@
       "type": "aéroport",
       "region": "Provence-Alpes-Côte d'Azur",
       "source": "windy",
-      "url_webcam": null,
-      "url_direct": "https://www.windy.com/webcams/map/France?43.439,5.221,11",
+      "windy_webcam_id": "1385642882",
+      "url_webcam": "https://webcams.windy.com/webcams/public/embed/player/1385642882/day",
+      "url_direct": "https://www.windy.com/webcams/1385642882",
       "embed_type": "iframe",
-      "actif": false,
-      "notes": "Chercher ID Windy : windy.com/webcams/map/France?43.439,5.221,11"
+      "actif": true,
+      "notes": "Marseille : Pointe Rouge HD — vue mer/horizon, excellente pour évaluer la visibilité"
     },
     {
       "id": "LFRS",
@@ -123,11 +142,12 @@
       "type": "aéroport",
       "region": "Pays de la Loire",
       "source": "windy",
-      "url_webcam": null,
-      "url_direct": "https://www.windy.com/webcams/map/France?47.153,-1.611,11",
+      "windy_webcam_id": "1189856505",
+      "url_webcam": "https://webcams.windy.com/webcams/public/embed/player/1189856505/day",
+      "url_direct": "https://www.windy.com/webcams/1189856505",
       "embed_type": "iframe",
-      "actif": false,
-      "notes": "Chercher ID Windy : windy.com/webcams/map/France?47.153,-1.611,11"
+      "actif": true,
+      "notes": "Nantes vue générale — ~10 km au nord-est du terrain"
     },
     {
       "id": "LFST",
@@ -138,11 +158,12 @@
       "type": "aéroport",
       "region": "Grand Est",
       "source": "windy",
-      "url_webcam": null,
-      "url_direct": "https://www.windy.com/webcams/map/France?48.538,7.628,11",
+      "windy_webcam_id": "1466624481",
+      "url_webcam": "https://webcams.windy.com/webcams/public/embed/player/1466624481/day",
+      "url_direct": "https://www.windy.com/webcams/1466624481",
       "embed_type": "iframe",
-      "actif": false,
-      "notes": "Chercher ID Windy : windy.com/webcams/map/France?48.538,7.628,11"
+      "actif": true,
+      "notes": "Strasbourg : Aéro Club Alsace — webcam aviation, ~15 km nord du terrain (Haguenau)"
     },
     {
       "id": "LFRB",
@@ -153,11 +174,12 @@
       "type": "aéroport",
       "region": "Bretagne",
       "source": "windy",
-      "url_webcam": null,
-      "url_direct": "https://www.windy.com/webcams/map/France?48.448,-4.419,11",
+      "windy_webcam_id": "1516977031",
+      "url_webcam": "https://webcams.windy.com/webcams/public/embed/player/1516977031/day",
+      "url_direct": "https://www.windy.com/webcams/1516977031",
       "embed_type": "iframe",
-      "actif": false,
-      "notes": "Brest : vents forts fréquents, webcam météo utile pour VFR. Chercher ID Windy près du port aussi."
+      "actif": true,
+      "notes": "Guipavas › Nord : Brest - Airport — webcam Windy labellisée Airport, ~3 km du terrain"
     }
   ]
 }

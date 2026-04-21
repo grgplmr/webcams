@@ -245,6 +245,31 @@ body {
   color: var(--text-muted);
 }
 
+.webcam-footer {
+  padding: .4rem .6rem;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.webcam-external-link {
+  font-size: .8rem;
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.webcam-external-link:hover { text-decoration: underline; }
+
+.webcam-dynamic-badge {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  font-size: .78rem;
+  padding: .3rem .6rem;
+  border-radius: var(--radius) var(--radius) 0 0;
+  margin-bottom: 0;
+}
+
 .webcam-unavailable {
   background: var(--bg);
   border: 2px dashed var(--border);
@@ -329,7 +354,10 @@ body {
 /* Skeleton loader */
 .skeleton { background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; height: 1rem; border-radius: 4px; margin-bottom: .5rem; }
 .skeleton.short { width: 60%; }
+.skeleton.skeleton-block { height: 220px; margin-bottom: .75rem; }
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+.sidebar-loading { padding: .5rem 0; }
 
 /* Dot d'état METAR dans les cartes */
 .metar-dot {
